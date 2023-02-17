@@ -9,11 +9,13 @@ export default defineConfig({
     vue(),
     AutoImport({
       resolvers: [ElementPlusResolver()],
-      // gglobal imports to register
+      // global imports to register
       imports: [
         'vue',
         'vue-router',
-      ]
+      ],
+      // ts needs to be added
+      dts: 'src/auto-import.d.ts'
     }),
     Components({
       resolvers: [ElementPlusResolver()],
