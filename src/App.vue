@@ -1,6 +1,6 @@
 <template>
   <el-config-provider :locale="locale">
-    <div></div>
+    <router-view />
   </el-config-provider>
 </template>
 <script lang="ts" setup>
