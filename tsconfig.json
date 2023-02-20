@@ -12,6 +12,13 @@
     "lib": ["ESNext", "DOM"],
     "skipLibCheck": true,
     "noEmit": true,
+    // 让输入@的时候，有正确的路径提示
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    // 开启类名自动提示插件typescript-plugin-css-modules
+    "plugins": [{"name": "typescript-plugin-css-modules"}],
     // 跳过库类的类型检测
     "suppressImplicitAnyIndexErrors": true
   },

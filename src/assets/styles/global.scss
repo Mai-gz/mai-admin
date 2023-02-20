@@ -1,0 +1,10 @@
+body {
+  background-color: #ffffff;
+  /* 禁用文字选中 */
+  user-select: none;
+}
+
+img {
+  /* 图片禁止拖动 */
+  -webkit-user-drag: none;
+}
