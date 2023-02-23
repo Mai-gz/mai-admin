@@ -10,13 +10,14 @@
     "isolatedModules": true,
     "esModuleInterop": true,
     "lib": ["ESNext", "DOM"],
+    // 跳过第三方库检查，解决打包失败
     "skipLibCheck": true,
     "noEmit": true,
     // 让输入@的时候，有正确的路径提示
     "baseUrl": "./",
     "paths": {
       "@": ["src"],
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
     },
     // 开启类名自动提示插件typescript-plugin-css-modules
     "plugins": [{"name": "typescript-plugin-css-modules"}],
