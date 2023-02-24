@@ -8,6 +8,7 @@ import { createHtmlPlugin } from 'vite-plugin-html'
 import { visualizer } from 'rollup-plugin-visualizer'
 import viteCompression from 'vite-plugin-compression'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import ElementPlus from 'unplugin-element-plus/vite'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import path from 'path'
 import { wrapperEnv } from './src/utils/getEnv'
@@ -44,7 +45,10 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
     plugins: [
       vue(),
       vueJsx(),
-      AutoImport({
+      ElementPlus({
+        useSource: true,
+      }),
+      AutoImport({  
         resolvers: [ElementPlusResolver()],
         // global imports to register
         imports: [
