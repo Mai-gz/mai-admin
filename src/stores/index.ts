@@ -1,8 +1,9 @@
 // 引入Store定义函数
 import { defineStore, createPinia } from 'pinia'
-import { DEFAULT_PRIMARY } from '@/config/config' 
+import { DEFAULT_PRIMARY } from '@/config/config'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import piniaPersistConfig from '@/config/piniaPersist'
+import { ThemeConfigProps, AssemblySizeType } from './interface/index'
 
 // 定义Store实例并导出，useStore可以是任何东西，比如useUser, useCart
 // 第一个参数，唯一不可重复，字符串类型，作为仓库ID 以区分仓库
@@ -35,7 +36,7 @@ export const GlobalStore = defineStore({
       // 当前页面是否全屏
       maximize: false,
       // 布局切换 ==>  纵向：vertical | 经典：classic | 横向：transverse | 分栏：columns
-      layout: "vertical",
+      layout: "classic",
       // 默认 primary 主题颜色
       primary: DEFAULT_PRIMARY,
       // 深色模式
@@ -69,17 +70,17 @@ export const GlobalStore = defineStore({
       this.userInfo = userInfo;
     },
     // setAssemblySizeSize
-    // setAssemblySizeSize(assemblySize: AssemblySizeType) {
-    //   this.assemblySize = assemblySize;
-    // },
+    setAssemblySizeSize(assemblySize: AssemblySizeType) {
+      this.assemblySize = assemblySize;
+    },
     // // updateLanguage
-    // updateLanguage(language: string) {
-    //   this.language = language;
-    // },
+    updateLanguage(language: string) {
+      this.language = language;
+    },
     // // setThemeConfig
-    // setThemeConfig(themeConfig: ThemeConfigProps) {
-    //   this.themeConfig = themeConfig;
-    // }
+    setThemeConfig(themeConfig: ThemeConfigProps) {
+      this.themeConfig = themeConfig;
+    }
   },
   // pinia持久化配置
   persist: piniaPersistConfig("GlobalState")

@@ -1,0 +1,88 @@
+<!-- 经典布局 -->
+<template>
+  <el-container class="layout">
+    <el-header>
+      <div class="header-lf">
+        <div class="logo flx-center">
+          <img src="@/assets/svg/browser-chrome.svg" alt="logo" />
+          <span>Mai Admin</span>
+        </div>
+        <ToolBarLeft />
+      </div>
+      <!-- <ToolBarRight /> -->
+    </el-header>
+    <el-container class="classic-content">
+      <el-aside>
+        <div class="menu" :style="{ width: isCollapse ? '65px' : '210px' }">
+          <el-scrollbar>
+            <el-menu :default-active="activeMenu" :router="false" :collapse="isCollapse" :collapse-transition="false"
+              :unique-opened="true" background-color="#ffffff" text-color="#303133">
+              <SubMenuCom :menuList="menuList" />
+            </el-menu>
+          </el-scrollbar>
+        </div>
+      </el-aside>
+      <el-container class="classic-main">
+        以下为main内容
+        <Main />
+      </el-container>
+    </el-container>
+  </el-container>
+</template>
+
+<script setup lang="ts" name="layoutClassic">
+import { GlobalStore } from "@/stores";
+import { AuthStore } from "@/stores/modules/auth";
+import Main from "@/layout/components/Main/index.vue";
+import SubMenuCom from "@/layout/components/Menu/SubMenu.vue";
+import ToolBarLeft from "@/layout/components/Header/ToolBarLeft.vue";
+// import ToolBarRight from "@/layout/components/Header/ToolBarRight.vue";
+
+const route = useRoute();
+const authStore = AuthStore();
+const globalStore = GlobalStore();
+const activeMenu = computed(() => (route.meta.activeMenu ? route.meta.activeMenu as string : route.path));
+const menuList = computed(() => authStore.showMenuListGet);
+const isCollapse = computed(() => globalStore.themeConfig.isCollapse);
+</script>
+
+<style scoped lang="scss">
+@import "./index.scss";
+</style>
+
+<style lang="scss">
+.classic {
+  .classic-content {
+    height: calc(100% - 55px); // 减去头部高度
+
+    .classic-main {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .el-menu,
+  .el-menu--popup {
+    .el-menu-item {
+      &.is-active {
+        background: var(--el-color-primary-light-9);
+
+        &::before {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          width: 4px;
+          content: "";
+          background: var(--el-color-primary);
+        }
+      }
+    }
+  }
+
+  // guide
+  #driver-highlighted-element-stage {
+    background-color: #606266 !important;
+  }
+}
+</style>

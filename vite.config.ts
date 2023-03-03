@@ -12,6 +12,7 @@ import ElementPlus from 'unplugin-element-plus/vite'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import path from 'path'
 import { wrapperEnv } from './src/utils/getEnv'
+import DefineOptions from 'unplugin-vue-define-options/vite'
 /*
  * 插件vite-plugin-html
  * HTML 压缩能力
@@ -40,9 +41,16 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       open: viteEnv.VITE_OPEN,
       cors: true,
       // 跨域代理配置
-      proxy: {}
+      proxy: {
+        "/api": {
+					target: viteEnv.VITE_API_URL,
+					changeOrigin: true,
+					rewrite: path => path.replace(/^\/api/, "")
+				}
+      }
     },
     plugins: [
+      DefineOptions(), // 配置后即可在script内通过defineOptions({name:xxx})直接定义组件的name,不需要再写一个export default来定义name
       vue(),
       vueJsx(),
       ElementPlus({
