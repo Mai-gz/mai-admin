@@ -1,6 +1,8 @@
 <template>
 	<div class="maximize" @click="exitMaximize">
-		<el-icon><Close /></el-icon>
+		<el-icon>
+			<Close />
+		</el-icon>
 	</div>
 </template>
 
@@ -28,9 +30,11 @@ const exitMaximize = () => {
 	background-color: var(--el-color-info);
 	border-radius: 50%;
 	opacity: 0.7;
+
 	&:hover {
 		background-color: var(--el-color-info-dark-2);
 	}
+
 	.el-icon {
 		position: relative;
 		top: 68%;

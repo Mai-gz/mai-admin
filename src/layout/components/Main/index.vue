@@ -1,6 +1,6 @@
 <template>
   <Maximize v-if="themeConfig.maximize" />
-	<!-- <Tabs v-if="themeConfig.tabs" /> -->
+	<Tabs v-if="themeConfig.tabs" />
   <el-main>
     <router-view v-slot="{ Component, route }">
       <transition appear name="fade-transform" mode="out-in">
@@ -19,6 +19,7 @@
 import { GlobalStore } from "@/stores";
 import { KeepAliveStore } from "@/stores/modules/keepalive";
 import Maximize from "./components/Maximize.vue";
+import Tabs from "@/layout/components/Tabs/index.vue";
 
 const globalStore = GlobalStore();
 const keepAliveStore = KeepAliveStore();

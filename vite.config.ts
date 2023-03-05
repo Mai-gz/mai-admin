@@ -2,17 +2,20 @@ import { defineConfig, loadEnv, ConfigEnv, UserConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import Icons from 'unplugin-icons/vite'
+import IconsResolver from 'unplugin-icons/resolver'
 import { createHtmlPlugin } from 'vite-plugin-html'
 // import eslintPlugin from 'vite-plugin-eslint'
 // import vueSetupExtend from 'vite-plugin-vue-setup-extend-plus'
 import { visualizer } from 'rollup-plugin-visualizer'
 import viteCompression from 'vite-plugin-compression'
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import ElementPlus from 'unplugin-element-plus/vite'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import path from 'path'
 import { wrapperEnv } from './src/utils/getEnv'
 import DefineOptions from 'unplugin-vue-define-options/vite'
+import Inspect from 'vite-plugin-inspect'
 /*
  * 插件vite-plugin-html
  * HTML 压缩能力
@@ -43,10 +46,10 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       // 跨域代理配置
       proxy: {
         "/api": {
-					target: viteEnv.VITE_API_URL,
-					changeOrigin: true,
-					rewrite: path => path.replace(/^\/api/, "")
-				}
+          target: viteEnv.VITE_API_URL,
+          changeOrigin: true,
+          rewrite: path => path.replace(/^\/api/, "")
+        }
       }
     },
     plugins: [
@@ -56,8 +59,15 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       ElementPlus({
         useSource: true,
       }),
-      AutoImport({  
-        resolvers: [ElementPlusResolver()],
+      AutoImport({
+        resolvers: [
+          ElementPlusResolver(),
+          // Auto import icon components
+          // 自动导入图标组件
+          IconsResolver({
+            prefix: 'Icon',
+          }),
+        ],
         // global imports to register
         imports: [
           'vue',
@@ -67,8 +77,22 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
         dts: 'src/auto-import.d.ts'
       }),
       Components({
-        resolvers: [ElementPlusResolver()],
+        resolvers: [
+          // Auto register Element Plus components
+          // 自动导入 Element Plus 组件
+          ElementPlusResolver(),
+          // Auto register icon components
+          // 自动注册图标组件
+          IconsResolver({
+            enabledCollections: ['ep'],
+          }),
+        ],
+        dts: 'src/components.d.ts'
       }),
+      Icons({
+        autoInstall: true,
+      }),
+      Inspect(),
       createHtmlPlugin({
         inject: {
           data: {

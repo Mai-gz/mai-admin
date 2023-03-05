@@ -23,7 +23,7 @@
     "plugins": [{"name": "typescript-plugin-css-modules"}],
     // 跳过库类的类型检测
     "suppressImplicitAnyIndexErrors": true,
-    "types": ["unplugin-vue-define-options/macros-global"],
+    // "types": ["unplugin-vue-define-options/macros-global"],
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "vite.config.ts"],
   "exclude": ["node_modules", "dist", "**/*.js"],
