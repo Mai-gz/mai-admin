@@ -3,7 +3,7 @@
 		<el-popover placement="bottom" :width="310" trigger="click">
 			<template #reference>
 				<el-badge :value="5" class="item">
-					<i :class="'iconfont icon-xiaoxi'" class="toolBar-icon"></i>
+					<i :class="'iconfont icon-iconfontxiaoxi'" class="toolBar-icon"></i>
 				</el-badge>
 			</template>
 			<el-tabs v-model="activeName">
@@ -12,35 +12,35 @@
 						<div class="message-item">
 							<img src="@/assets/images/msg01.png" alt="" class="message-icon" />
 							<div class="message-content">
-								<span class="message-title">一键三连 Geeker-Admin 🧡</span>
+								<span class="message-title">这是一条XXX消息 🧡</span>
 								<span class="message-date">一分钟前</span>
 							</div>
 						</div>
 						<div class="message-item">
 							<img src="@/assets/images/msg02.png" alt="" class="message-icon" />
 							<div class="message-content">
-								<span class="message-title">一键三连 Geeker-Admin 💙</span>
+								<span class="message-title">这是一条XXX消息 💙</span>
 								<span class="message-date">一小时前</span>
 							</div>
 						</div>
 						<div class="message-item">
 							<img src="@/assets/images/msg03.png" alt="" class="message-icon" />
 							<div class="message-content">
-								<span class="message-title">一键三连 Geeker-Admin 💚</span>
+								<span class="message-title">这是一条XXX消息 💚</span>
 								<span class="message-date">半天前</span>
 							</div>
 						</div>
 						<div class="message-item">
 							<img src="@/assets/images/msg04.png" alt="" class="message-icon" />
 							<div class="message-content">
-								<span class="message-title">一键三连 Geeker-Admin 💜</span>
+								<span class="message-title">这是一条XXX消息 💜</span>
 								<span class="message-date">一星期前</span>
 							</div>
 						</div>
 						<div class="message-item">
 							<img src="@/assets/images/msg05.png" alt="" class="message-icon" />
 							<div class="message-content">
-								<span class="message-title">一键三连 Geeker-Admin 💛</span>
+								<span class="message-title">这是一条XXX消息 💛</span>
 								<span class="message-date">一个月前</span>
 							</div>
 						</div>
@@ -64,8 +64,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-
 const activeName = ref("first");
 </script>
 
@@ -78,28 +76,35 @@ const activeName = ref("first");
 	height: 260px;
 	line-height: 45px;
 }
+
 .message-list {
 	display: flex;
 	flex-direction: column;
+
 	.message-item {
 		display: flex;
 		align-items: center;
 		padding: 20px 0;
 		border-bottom: 1px solid var(--el-border-color-light);
+
 		&:last-child {
 			border: none;
 		}
+
 		.message-icon {
 			width: 40px;
 			height: 40px;
 			margin: 0 20px 0 5px;
 		}
+
 		.message-content {
 			display: flex;
 			flex-direction: column;
+
 			.message-title {
 				margin-bottom: 5px;
 			}
+
 			.message-date {
 				font-size: 12px;
 				color: var(--el-text-color-secondary);

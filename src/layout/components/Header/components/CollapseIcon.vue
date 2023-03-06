@@ -5,12 +5,12 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
 import { GlobalStore } from "@/stores";
 
 const globalStore = GlobalStore();
 const themeConfig = computed(() => globalStore.themeConfig);
 
+// 控制侧边菜单展开|收缩
 const collapse = () => {
 	globalStore.setThemeConfig({ ...themeConfig.value, isCollapse: !themeConfig.value.isCollapse });
 };

@@ -141,16 +141,16 @@ export function getTimeState() {
  * @description 获取浏览器默认语言
  * @return string
  */
-// export function getBrowserLang() {
-//   let browserLang = navigator.language ? navigator.language : navigator.browserLanguage;
-//   let defaultBrowserLang = "";
-//   if (browserLang.toLowerCase() === "cn" || browserLang.toLowerCase() === "zh" || browserLang.toLowerCase() === "zh-cn") {
-//     defaultBrowserLang = "zh";
-//   } else {
-//     defaultBrowserLang = "en";
-//   }
-//   return defaultBrowserLang;
-// }
+export function getBrowserLang() {
+  let browserLang = navigator.language ? navigator.language : navigator.browserLanguage;
+  let defaultBrowserLang = "";
+  if (browserLang.toLowerCase() === "cn" || browserLang.toLowerCase() === "zh" || browserLang.toLowerCase() === "zh-cn") {
+    defaultBrowserLang = "zh";
+  } else {
+    defaultBrowserLang = "en";
+  }
+  return defaultBrowserLang;
+}
 
 /**
  * @description 递归查询当前路由所对应的路由

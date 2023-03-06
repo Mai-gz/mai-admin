@@ -12,17 +12,18 @@
           </template>
         </el-tab-pane>
       </el-tabs>
-      <!-- <MoreButton /> -->
+      <MoreButton />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { GlobalStore } from '@/stores';
-import { TabsStore } from '@/stores/modules/tab';
+import { TabsStore } from '@/stores/modules/tabs';
 import { AuthStore } from '@/stores/modules/auth';
 import { KeepAliveStore } from '@/stores/modules/keepalive';
-import { TabsPaneContext } from 'element-plus';
+import { TabPaneName, TabsPaneContext } from 'element-plus';
+import MoreButton from './components/MoreButton.vue';
 
 const route = useRoute();
 const router = useRouter();
@@ -80,12 +81,17 @@ watch(
 const themeConfig = computed(() => globalStore.themeConfig);
 const tabsMenuList = computed(() => tabStore.tabsMenuList);
 
-const tabClick = (tabItem: TabsPaneContext): void => {
+const tabClick = (tabItem: TabsPaneContext) => {
   // 路由跳转
   const fullPath = tabItem.props.name as string;
   router.push(fullPath);
 };
-const tabRemove = (): void => { };
+const tabRemove = (fullPath: TabPaneName | string) => {
+  // 获取tab的name
+  const name = tabStore.tabsMenuList.filter(item => item.path === fullPath)[0].name || "";
+  keepAliveStore.removeKeepAliveName(name);
+  tabStore.removeTabs(fullPath as string, fullPath === route.fullPath);
+};
 </script>
 
 <style lang="scss" scoped>

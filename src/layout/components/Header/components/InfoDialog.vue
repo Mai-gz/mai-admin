@@ -1,6 +1,6 @@
 <template>
 	<el-dialog v-model="dialogVisible" title="个人信息" width="500px" draggable>
-		<span>This is userInfo</span>
+		<span>这里是当前账号的XXXXXX信息</span>
 		<template #footer>
 			<span class="dialog-footer">
 				<el-button @click="dialogVisible = false">取消</el-button>
@@ -11,10 +11,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
 const dialogVisible = ref(false);
 
-// openDialog
+// 打开弹窗
 const openDialog = () => {
 	dialogVisible.value = true;
 };

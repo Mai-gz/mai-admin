@@ -2,14 +2,8 @@
 	<div class="layout-search-dialog">
 		<i @click="handleOpen" :class="'iconfont icon-sousuo'" class="toolBar-icon"></i>
 		<el-dialog v-model="isShowSearch" destroy-on-close :modal="false" :show-close="false" fullscreen @click="closeSearch">
-			<el-autocomplete
-				v-model="searchMenu"
-				ref="menuInputRef"
-				placeholder="菜单搜索 ：支持菜单名称、路径"
-				:fetch-suggestions="searchMenuList"
-				@select="handleClickMenu"
-				@click.stop
-			>
+			<el-autocomplete v-model="searchMenu" ref="menuInputRef" placeholder="菜单搜索 ：支持菜单名称、路径"
+				:fetch-suggestions="searchMenuList" @select="handleClickMenu" @click.stop>
 				<template #prefix>
 					<el-icon>
 						<Search />
@@ -27,9 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, nextTick } from "vue";
 import { Search } from "@element-plus/icons-vue";
-import { useRouter } from "vue-router";
 import { AuthStore } from "@/stores/modules/auth";
 const router = useRouter();
 const authStore = AuthStore();
@@ -70,7 +62,7 @@ const filterNodeMethod = (queryString: string) => {
 };
 
 // 点击菜单跳转
-const handleClickMenu = (menuItem: Menu.MenuOptions) => {
+const handleClickMenu = (menuItem: Record<string, any>) => {
 	searchMenu.value = "";
 	if (menuItem.meta.isLink) window.open(menuItem.meta.isLink, "_blank");
 	else router.push(menuItem.path);
@@ -85,27 +77,32 @@ const handleClickMenu = (menuItem: Menu.MenuOptions) => {
 		background: rgb(0 0 0 / 50%);
 		border-radius: 0 !important;
 		box-shadow: unset !important;
+
 		.el-dialog__header {
 			border-bottom: none !important;
 		}
 	}
+
 	:deep(.el-autocomplete) {
 		position: absolute;
 		top: 100px;
 		left: 50%;
 		width: 550px;
 		transform: translateX(-50%);
+
 		.el-input__wrapper {
 			background-color: var(--el-bg-color);
 		}
 	}
 }
+
 .el-autocomplete__popper {
 	.el-icon {
 		position: relative;
 		top: 2px;
 		font-size: 16px;
 	}
+
 	span {
 		margin: 0 0 0 10px;
 		font-size: 14px;

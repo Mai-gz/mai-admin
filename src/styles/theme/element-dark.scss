@@ -1,9 +1,9 @@
 /* 自定义 element 暗黑模式样式 */
 html.dark {
-  // * geeker-admin
-  --geeker-bg-color: #141414;
-  --geeker-main-bg-color: #0d0d0d;
-  --geeker-border-light: 1px solid #4c4c4d;
+  // * mai-admin
+  --mai-bg-color: #141414;
+  --mai-main-bg-color: #0d0d0d;
+  --mai-border-light: 1px solid #4c4c4d;
 
   // * wangEditor
   --w-e-toolbar-color: #595959;
@@ -42,11 +42,11 @@ html.dark {
   // layout
   .el-container {
     .el-aside {
-      background-color: var(--geeker-bg-color) !important;
-      border-right: var(--geeker-border-light) !important;
+      background-color: var(--mai-bg-color) !important;
+      border-right: var(--mai-border-light) !important;
 
       .logo {
-        border-bottom: var(--geeker-border-light) !important;
+        border-bottom: var(--mai-border-light) !important;
       }
     }
 
@@ -55,25 +55,25 @@ html.dark {
     }
 
     .el-header {
-      background-color: var(--geeker-bg-color) !important;
+      background-color: var(--mai-bg-color) !important;
       border-bottom-color: var(--el-border-color-light) !important;
     }
 
     .el-main {
-      background-color: var(--geeker-main-bg-color) !important;
+      background-color: var(--mai-main-bg-color) !important;
 
       .card {
-        background-color: var(--geeker-bg-color) !important;
+        background-color: var(--mai-bg-color) !important;
       }
     }
 
     .el-tabs {
-      background-color: var(--geeker-bg-color) !important;
+      background-color: var(--mai-bg-color) !important;
     }
 
     .el-footer {
       .footer {
-        background-color: var(--geeker-bg-color) !important;
+        background-color: var(--mai-bg-color) !important;
         border-top-color: var(--el-border-color-light) !important;
 
         a {
@@ -88,7 +88,7 @@ html.dark {
   .el-sub-menu,
   .el-menu-item,
   .el-sub-menu__title {
-    background-color: var(--geeker-bg-color) !important;
+    background-color: var(--mai-bg-color) !important;
 
     &:not(.is-active) {
       color: #bdbdc0 !important;
@@ -101,15 +101,15 @@ html.dark {
   }
 
   .el-menu-item:not(.is-active):hover {
-    background-color: var(--geeker-main-bg-color) !important;
+    background-color: var(--mai-main-bg-color) !important;
   }
 
   .aside-split {
-    background-color: var(--geeker-bg-color) !important;
-    border-right: var(--geeker-border-light) !important;
+    background-color: var(--mai-bg-color) !important;
+    border-right: var(--mai-border-light) !important;
 
     .logo {
-      border-bottom: var(--geeker-border-light) !important;
+      border-bottom: var(--mai-border-light) !important;
     }
   }
 

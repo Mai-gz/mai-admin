@@ -9,7 +9,7 @@
         </div>
         <ToolBarLeft />
       </div>
-      <!-- <ToolBarRight /> -->
+      <ToolBarRight />
     </el-header>
     <el-container class="classic-content">
       <el-aside>
@@ -30,12 +30,12 @@
 </template>
 
 <script setup lang="ts" name="layoutClassic">
-import { GlobalStore } from "@/stores";
-import { AuthStore } from "@/stores/modules/auth";
-import Main from "@/layout/components/Main/index.vue";
-import SubMenuCom from "@/layout/components/Menu/SubMenu.vue";
-import ToolBarLeft from "@/layout/components/Header/ToolBarLeft.vue";
-// import ToolBarRight from "@/layout/components/Header/ToolBarRight.vue";
+import { GlobalStore } from '@/stores';
+import { AuthStore } from '@/stores/modules/auth';
+import Main from '@/layout/components/Main/index.vue';
+import SubMenuCom from '@/layout/components/Menu/SubMenu.vue';
+import ToolBarLeft from '@/layout/components/Header/ToolBarLeft.vue';
+import ToolBarRight from '@/layout/components/Header/ToolBarRight.vue';
 
 const route = useRoute();
 const authStore = AuthStore();

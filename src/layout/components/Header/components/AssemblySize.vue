@@ -12,9 +12,8 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, computed } from "vue";
-import { GlobalStore } from "@/stores";
-import { AssemblySizeType } from "@/stores/interface";
+import { GlobalStore } from '@/stores';
+import { AssemblySizeType } from '@/stores/interface';
 
 const globalStore = GlobalStore();
 const assemblySize = computed(() => globalStore.assemblySize);
@@ -26,6 +25,7 @@ const assemblySizeListCh = reactive<{ [key: string]: string }>({
 	small: "小型"
 });
 
+// 设置大小
 const setAssemblySize = (item: AssemblySizeType) => {
 	if (assemblySize.value === item) return;
 	globalStore.setAssemblySizeSize(item);

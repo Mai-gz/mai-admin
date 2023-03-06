@@ -35,6 +35,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       // 路径别名
       alias: {
         "@": path.resolve(__dirname, "./src"),
+        "vue-i18n": "vue-i18n/dist/vue-i18n.cjs.js" // 解决vue-i18n报警告
       },
     },
     server: {

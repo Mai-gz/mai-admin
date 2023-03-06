@@ -1,15 +1,14 @@
 <template>
 	<div class="tool-bar-lf">
-		left
-		<!-- <CollapseIcon id="collapseIcon" />
-		<Breadcrumb id="breadcrumb" v-if="themeConfig.breadcrumb" /> -->
+		<CollapseIcon id="collapseIcon" />
+		<Breadcrumb id="breadcrumb" v-if="themeConfig.breadcrumb" />
 	</div>
 </template>
 
 <script setup lang="ts">
 import { GlobalStore } from "@/stores";
-// import CollapseIcon from "./components/CollapseIcon.vue";
-// import Breadcrumb from "./components/Breadcrumb.vue";
+import CollapseIcon from "./components/CollapseIcon.vue";
+import Breadcrumb from "./components/Breadcrumb.vue";
 
 const globalStore = GlobalStore();
 const themeConfig = computed(() => globalStore.themeConfig);
