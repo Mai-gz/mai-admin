@@ -38,6 +38,14 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
         "vue-i18n": "vue-i18n/dist/vue-i18n.cjs.js" // 解决vue-i18n报警告
       },
     },
+    css: {
+			preprocessorOptions: {
+        // 增加对less的配置
+				less: {
+          javascriptEnabled: true,
+        },
+			}
+		},
     server: {
       // 服务器主机名，如果允许外部访问，可设置为 "0.0.0.0"
       host: "0.0.0.0",

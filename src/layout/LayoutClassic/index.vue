@@ -4,7 +4,7 @@
     <el-header>
       <div class="header-lf">
         <div class="logo flx-center">
-          <img src="@/assets/svg/browser-chrome.svg" alt="logo" />
+          <img src="@/assets/images/logo.svg" alt="logo" />
           <span>Mai Admin</span>
         </div>
         <ToolBarLeft />

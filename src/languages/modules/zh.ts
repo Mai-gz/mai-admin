@@ -24,5 +24,20 @@ export default {
     personalData: "个人信息",
     changePassword: "修改密码",
     logout: "退出登录"
+  },
+  theme: {
+    layoutSwitch: "布局切换",
+    theme: "全局主题",
+    primary: "primary",
+    darkMode: "暗黑模式",
+    greyMode: "灰色模式",
+    weakMode: "色弱模式",
+    interfaceConfig: "界面设置",
+    collapseMenu: "折叠菜单",
+    breadcrumb: "面包屑",
+    breadcrumbIcon: "面包屑图标",
+    tabs: "标签栏",
+    tabsIcon: "标签栏图标",
+    footer: "页脚"
   }
 };

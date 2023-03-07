@@ -14,7 +14,7 @@ const globalStore = GlobalStore();
 const themeConfig = computed(() => globalStore.themeConfig);
 // 退出最大化
 const exitMaximize = () => {
-	// globalStore.setThemeConfig({ ...themeConfig.value, maximize: false });
+	globalStore.setThemeConfig({ ...themeConfig.value, maximize: false });
 };
 </script>
 

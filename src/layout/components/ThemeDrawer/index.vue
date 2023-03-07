@@ -5,7 +5,7 @@
 			<el-icon>
 				<Notification />
 			</el-icon>
-			布局切换
+			{{ $t("theme.layoutSwitch") }}
 		</el-divider>
 		<div class="layout-box">
 			<el-tooltip effect="dark" content="纵向" placement="top" :show-after="200">
@@ -59,37 +59,59 @@
 		<br />
 
 		<!-- 全局主题 -->
-		<!--   -->
+		<el-divider class="divider" content-position="center">
+			<el-icon>
+				<ColdDrink />
+			</el-icon>
+			{{ $t("theme.theme") }}
+		</el-divider>
+		<div class="theme-item">
+			<span>{{ $t("theme.primary") }}</span>
+			<el-color-picker v-model="themeConfig.primary" :predefine="colorList" @change="changePrimary" />
+		</div>
+		<div class="theme-item">
+			<span>{{ $t("theme.darkMode") }}</span>
+			<SwitchDark></SwitchDark>
+		</div>
+		<div class="theme-item">
+			<span>{{ $t("theme.greyMode") }}</span>
+			<el-switch v-model="themeConfig.isGrey" @change="changeGreyOrWeak($event, 'grey')" />
+		</div>
+		<div class="theme-item">
+			<span>{{ $t("theme.weakMode") }}</span>
+			<el-switch v-model="themeConfig.isWeak" @change="changeGreyOrWeak($event, 'weak')" />
+		</div>
+		<br />
 
 		<!-- 界面设置 -->
 		<el-divider class="divider" content-position="center">
 			<el-icon>
 				<Setting />
 			</el-icon>
-			界面设置
+			{{ $t("theme.interfaceConfig") }}
 		</el-divider>
 		<div class="theme-item">
-			<span>折叠菜单</span>
+			<span>{{ $t("theme.collapseMenu") }}</span>
 			<el-switch v-model="themeConfig.isCollapse" />
 		</div>
 		<div class="theme-item">
-			<span>面包屑</span>
+			<span>{{ $t("theme.breadcrumb") }}</span>
 			<el-switch v-model="themeConfig.breadcrumb" />
 		</div>
 		<div class="theme-item">
-			<span>面包屑图标</span>
+			<span>{{ $t("theme.breadcrumbIcon") }}</span>
 			<el-switch v-model="themeConfig.breadcrumbIcon" />
 		</div>
 		<div class="theme-item">
-			<span>标签栏</span>
+			<span>{{ $t("theme.tabs") }}</span>
 			<el-switch v-model="themeConfig.tabs" />
 		</div>
 		<div class="theme-item">
-			<span>标签栏图标</span>
+			<span>{{ $t("theme.tabsIcon") }}</span>
 			<el-switch v-model="themeConfig.tabsIcon" />
 		</div>
 		<div class="theme-item">
-			<span>页脚</span>
+			<span>{{ $t("theme.footer") }}</span>
 			<el-switch v-model="themeConfig.footer" />
 		</div>
 	</el-drawer>
@@ -97,14 +119,14 @@
 
 <script setup lang="ts">
 import { ref, computed, watch } from "vue";
-// import { useTheme } from "@/hooks/useTheme";
+import { useTheme } from "@/hooks/useTheme";
 import { GlobalStore } from "@/stores";
 import { LayoutType } from "@/stores/interface";
 import { DEFAULT_PRIMARY } from "@/config/config";
-// import SwitchDark from "@/components/SwitchDark/index.vue";
-// import mittBus from "@/utils/mittBus";
+import SwitchDark from "@/components/SwitchDark/index.vue";
+import mittBus from "@/utils/mittBus";
 
-// const { changePrimary, changeGreyOrWeak } = useTheme();
+const { changePrimary, changeGreyOrWeak } = useTheme();
 
 // 预定义主题颜色
 const colorList = [
@@ -140,7 +162,8 @@ watch(
 
 // 打开主题设置
 const drawerVisible = ref(false);
-// mittBus.on("openThemeDrawer", () => (drawerVisible.value = true));
+mittBus.on("openThemeDrawer", () => (drawerVisible.value = true));
+
 </script>
 
 <style scoped lang="scss">

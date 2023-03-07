@@ -6,7 +6,10 @@
 
 <script setup lang="ts">
 import mittBus from "@/utils/mittBus";
+// bus总线
 const openDrawer = () => {
-	mittBus.emit("openThemeDrawer");
+	console.log("总线emit");
+	
+	mittBus.emit("openThemeDrawer", '1');
 };
 </script>
