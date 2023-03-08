@@ -39,6 +39,11 @@
       </div>
     </div>
   </div>
+  <script>
+    const isDark = JSON.parse(window.localStorage.getItem("GlobalState")).themeConfig.isDark;
+    const html = document.querySelector("html");
+    if (isDark) html.style.background = "#141414";
+  </script>
   <script type="module" src="/src/main.ts"></script>
   <style>
     html,

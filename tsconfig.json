@@ -18,6 +18,7 @@
     "paths": {
       "@": ["src"],
       "@/*": ["src/*"],
+      "@c/*": ["src/components*"]
     },
     // 开启类名自动提示插件typescript-plugin-css-modules
     "plugins": [{"name": "typescript-plugin-css-modules"}],

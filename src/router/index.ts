@@ -33,9 +33,6 @@ const router = createRouter({
 
 // 路由拦截
 router.beforeEach(async (to, from, next) => {
-    // console.log("to:", to); 
-    // console.log("from:", from);
-    // console.log("next:", next);
     const globalStore = GlobalStore();
 
     // 1.NProgress开始

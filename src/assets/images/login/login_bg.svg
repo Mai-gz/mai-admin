@@ -18,9 +18,9 @@
     <animateTransform attributeType="XML" attributeName="transform" begin="0s" dur="35s" type="rotate" from="0 210 530" to="360 210 530" repeatCount="indefinite"/>
   </path>
 
-<!--  <circle cx="1200" cy="600" r="30" stroke="rgb(241, 243, 244)" fill="rgb(241, 243, 244)">-->
-<!--    <animateMotion path="M 0 0 L -20 40 Z" dur="9s" repeatCount="indefinite"/>-->
-<!--  </circle>-->
+ <!-- <circle cx="1200" cy="600" r="30" stroke="rgb(241, 243, 244)" fill="rgb(241, 243, 244)">
+   <animateMotion path="M 0 0 L -20 40 Z" dur="9s" repeatCount="indefinite"/>
+ </circle> -->
 
   <path d="M 100 350 A 40 40 0 1 1 180 350 L 180 430 A 40 40 0 1 1 100 430 Z" fill="#3054EB">
     <animateMotion path="M 140 390 L 180 360 L 140 390" dur="20s" begin="0s" repeatCount="indefinite"/>

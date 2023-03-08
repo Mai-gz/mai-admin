@@ -14,14 +14,17 @@ export const useTheme = () => {
   // 切换暗黑模式
   const switchDark = () => {
     const body = document.documentElement as HTMLElement;
-    if (themeConfig.value.isDark) body.setAttribute("class", "dark");
+    // 给body添加dark的class类样式(element自带的暗黑模式配置方法)
+    if (themeConfig.value.isDark) {
+      body.setAttribute("class", "dark");
+      changePrimary(themeConfig.value.primary);
+    }
     else body.setAttribute("class", "");
-    changePrimary(themeConfig.value.primary);
+
   };
 
   // 修改主题颜色
   const changePrimary = (val: string | null) => {
-    console.log("选择的主题色:", val);
     if (!val) {
       val = DEFAULT_PRIMARY;
       ElMessage({ type: "success", message: `主题颜色已重置为 ${DEFAULT_PRIMARY}` });
