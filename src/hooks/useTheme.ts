@@ -53,7 +53,6 @@ export const useTheme = () => {
   // 灰色和弱色切换
   const changeGreyOrWeak = (value: string | number | boolean, type: string) => {
     console.log(value, type);
-
     const body = document.body as HTMLElement;
     if (!value) return body.setAttribute("style", "");
     if (type === "grey") body.setAttribute("style", "filter: grayscale(1)");
