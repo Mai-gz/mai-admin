@@ -7,9 +7,9 @@ import { LOGIN_URL } from "@/config/config";
 import router from "@/router";
 import { GlobalStore } from '@/stores'
 import { showFullScreenLoading, tryHideFullScreenLoading } from "@/config/serviceLoading";
-
+console.log(import.meta.env.VITE_API_URL);
 const config = {
-  // 默认地址请求地址，可在 .env.*** 文件中修改
+  // 默认地址请求地址，可在 .env.*** 文件中修改 
   baseURL: import.meta.env.VITE_API_URL as string,
   // 设置超时时间（10s）
   timeout: ResultEnum.TIMEOUT as number,
