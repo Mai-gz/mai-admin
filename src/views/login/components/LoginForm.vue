@@ -65,7 +65,14 @@ const login = (formEl: FormInstance | undefined) => {
     try {
       // 1.执行登录接口
       const { data } = await loginApi({ ...loginForm, password: md5(loginForm.password) });
-      globalStore.setToken(data.token);
+
+      // 当登录失败则返回
+      if (data.code !== 200) {
+        ElMessage.error("登录失败");
+        return;
+      }
+      
+      globalStore.setToken(data.msg.token);
 
       // 2.添加动态路由
       await initDynamicRouter();

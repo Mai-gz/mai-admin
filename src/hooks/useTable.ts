@@ -97,6 +97,7 @@ export const useTable = (
    * @return void
    * */
   const updatePageable = (resPageable: Table.Pageable) => {
+    // 克隆对象（浅）
     Object.assign(state.pageable, resPageable);
   };
 

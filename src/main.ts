@@ -19,8 +19,14 @@ import "@/styles/theme/element-dark.scss";
 import "@/assets/iconfont/iconfont.scss";
 // vue i18n
 import I18n from "@/languages/index";
+// 自定义指令
+import directives from "@/directives/index";
+
 // element icons
 import * as Icons from "@element-plus/icons-vue";
+// element-plus
+import ElementPlus from "element-plus";
+import "element-plus/dist/index.css";
 
 const app = createApp(App);
 // 注册element Icons组件
@@ -32,4 +38,6 @@ app
   .use(router)
   .use(pinia)
   .use(I18n)
+  .use(directives)
+  .use(ElementPlus)
   .mount('#app')

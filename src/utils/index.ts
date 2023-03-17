@@ -271,7 +271,10 @@ export function formatValue(callValue: any) {
  * @return any
  * */
 export function handleRowAccordingToProp(row: { [key: string]: any }, prop: string) {
-  if (!prop.includes(".")) return row[prop] ?? "--";
+  if (!prop.includes(".")) {
+    return row[prop] ?? "--";
+  }
+
   prop.split(".").forEach(item => (row = row[item] ?? "--"));
   return row;
 }

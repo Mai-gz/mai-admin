@@ -8,9 +8,11 @@
     <!-- 表格头部 操作按钮 -->
     <div class="table-header">
       <div class="header-button-lf">
+        <!-- tableHeader插槽 -->
         <slot name="tableHeader" :selectedListIds="selectedListIds" :selectedList="selectedList" :isSelected="isSelected">
         </slot>
       </div>
+      <!-- table头部工具 -->
       <div class="header-button-ri" v-if="toolButton">
         <el-button :icon="Refresh" circle @click="getTableList"> </el-button>
         <el-button :icon="Printer" circle v-if="columns.length" @click="handlePrint"> </el-button>
@@ -35,6 +37,7 @@
         </el-table-column>
         <!-- other 循环递归 -->
         <TableColumn v-if="!item.type && item.prop && item.isShow" :column="item">
+          <!-- vue3将默认插槽和具名插槽全部放在了this.$slots里面 -->
           <template v-for="slot in Object.keys($slots)" #[slot]="scope">
             <slot :name="slot" :row="scope.row"></slot>
           </template>
@@ -49,7 +52,7 @@
         <div class="table-empty">
           <slot name="empty">
             <img src="@/assets/images/notData.png" alt="notData" />
-            <div>暂无数据</div>
+            <div>暂无数据</div> 
           </slot>
         </div>
       </template>
@@ -102,7 +105,7 @@ const props = withDefaults(defineProps<ProTableProps>(), {
   searchCol: () => ({ xs: 1, sm: 2, md: 2, lg: 3, xl: 4 })
 });
 
-console.log(props);
+console.log("子组件接收到的props数据:", props);
 // 是否显示搜索模块
 const isShowSearch = ref(true);
 
@@ -127,13 +130,17 @@ const tableColumns = ref<ColumnProps[]>(props.columns);
 
 // 定义 enumMap 存储 enum 值（避免异步请求无法格式化单元格内容 || 无法填充搜索下拉选择）
 const enumMap = ref(new Map<string, { [key: string]: any }[]>());
+
 provide("enumMap", enumMap);
 const setEnumMap = async (col: ColumnProps) => {
   if (!col.enum) return;
   // 如果当前 enum 为后台数据需要请求数据，则调用该请求接口，并存储到 enumMap
-  if (typeof col.enum !== "function") return enumMap.value.set(col.prop!, col.enum!);
+  if (typeof col.enum !== "function") {
+    return enumMap.value.set(col.prop!, col.enum!);
+  }
   const { data } = await col.enum();
   enumMap.value.set(col.prop!, data);
+  console.log("enumMap---Map", enumMap);
 };
 
 // 扁平化 columns
@@ -158,6 +165,7 @@ flatColumns.value = flatColumnsFunc(tableColumns.value);
 
 // 过滤需要搜索的配置项
 const searchColumns = flatColumns.value.filter(item => item.search?.el);
+
 
 // 设置搜索表单排序默认值 && 设置搜索表单项的默认值
 searchColumns.forEach((column, index) => {

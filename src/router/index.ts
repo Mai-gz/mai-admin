@@ -45,7 +45,7 @@ router.beforeEach(async (to, from, next) => {
     // 3.判断当前访问的是否为登录页面，则重置路由，如果有token则从哪来回哪去(跳转到跳转前的路由)
     if (to.path === LOGIN_URL) {
         if (globalStore.token) return next(from.fullPath);
-        resetRouter();
+        resetRouter(); 
         return next();
     }
 

@@ -2,7 +2,7 @@
   <div class="table-box">
     <ProTable ref="proTable" title="用户列表" :columns="columns" :requestApi="getTableList" :initParam="initParam"
       :dataCallback="dataCallback">
-      <!-- 表格 header 按钮 -->
+      <!-- 表格 header 按钮 tableHeader具名插槽 -->
       <template #tableHeader="scope">
         <el-button type="primary" :icon="CirclePlus" @click="openDrawer('新增')" v-auth="'add'">新增用户</el-button>
         <el-button type="primary" :icon="Upload" plain @click="batchAdd" v-auth="'batchAdd'">批量添加用户</el-button>
@@ -13,7 +13,7 @@
           批量删除用户
         </el-button>
       </template>
-      <!-- Expand -->
+      <!-- Expand具名插槽 显示接口的完整数据 -->
       <template #expand="scope">
         {{ scope.row }}
       </template>
@@ -43,9 +43,7 @@
 </template>
 
 <script setup lang="tsx" name="useProTable">
-import { ref, reactive } from "vue";
 import { ElMessage, ElMessageBox } from "element-plus";
-import { useRouter } from "vue-router";
 import { User } from "@/api/interface";
 import { ColumnProps } from "@/components/ProTable/interface";
 import { useHandleData } from "@/hooks/useHandleData";
@@ -74,7 +72,7 @@ const router = useRouter();
 const toDetail = () => {
   router.push(`/proTable/useProTable/detail/${Math.random()}?params=detail-page`);
 };
-
+1
 // 获取 ProTable 元素，调用其获取刷新数据方法（还能获取到当前查询参数，方便导出携带参数）
 const proTable = ref();
 
@@ -107,6 +105,7 @@ const { BUTTONS } = useAuthButtons();
 
 // 自定义渲染表头（使用tsx语法）
 const headerRender = (row: ColumnProps) => {
+  console.log("headerRender--row:", row);
   return (
     <el-button
       type="primary"

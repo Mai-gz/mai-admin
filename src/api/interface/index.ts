@@ -16,7 +16,12 @@ export namespace Login {
     password: string;
   }
   export interface ResLogin {
-    token: string;
+    code: number;
+    msg: {
+      token: string;
+      id: number | string;
+      username: string;
+    };
   }
   export interface ResAuthButtons {
     [key: string]: string[];
