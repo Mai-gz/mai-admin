@@ -102,9 +102,9 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       Icons({
         autoInstall: true,
       }),
-      Inspect(),
-      createHtmlPlugin({
-        inject: {
+      Inspect(), // vite插件调试工具
+      createHtmlPlugin({ // 动态控制index.html文件的内容
+        inject: { // 注入到页面中的数据
           data: {
             title: viteEnv.VITE_GLOB_APP_TITLE
           }

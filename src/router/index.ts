@@ -59,6 +59,7 @@ router.beforeEach(async (to, from, next) => {
     const authStore = AuthStore();
     authStore.setRouteName(to.name as string);
     if (!authStore.authMenuListGet.length) {
+        console.log("in????", authStore.authMenuListGet)
         await initDynamicRouter();
         return next({ ...to, replace: true });
     };

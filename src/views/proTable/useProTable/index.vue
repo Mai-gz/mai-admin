@@ -72,7 +72,7 @@ const router = useRouter();
 const toDetail = () => {
   router.push(`/proTable/useProTable/detail/${Math.random()}?params=detail-page`);
 };
-1
+
 // 获取 ProTable 元素，调用其获取刷新数据方法（还能获取到当前查询参数，方便导出携带参数）
 const proTable = ref();
 
@@ -105,7 +105,6 @@ const { BUTTONS } = useAuthButtons();
 
 // 自定义渲染表头（使用tsx语法）
 const headerRender = (row: ColumnProps) => {
-  console.log("headerRender--row:", row);
   return (
     <el-button
       type="primary"
@@ -207,6 +206,7 @@ const batchDelete = async (id: string[]) => {
 // 重置用户密码
 const resetPass = async (params: User.ResUserList) => {
   await useHandleData(resetUserPassWord, { id: params.id }, `重置【${params.username}】用户密码`);
+  // 调用获取表格列表方法重新获取数据
   proTable.value.getTableList();
 };
 

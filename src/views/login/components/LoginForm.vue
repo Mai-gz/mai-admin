@@ -30,11 +30,11 @@
 
 <script setup lang="ts">
 import { Login } from "@/api/interface";
-import { ElNotification } from "element-plus";
+import { ElMessage, ElNotification } from "element-plus";
 import { loginApi } from "@/api/modules/login";
 import { GlobalStore } from "@/stores";
 import { TabsStore } from "@/stores/modules/tabs";
-import { KeepAliveStore } from "@/stores/modules/keepAlive";
+import { KeepAliveStore } from "@/stores/modules/keepalive";
 import { getTimeState } from "@/utils/index";
 import { HOME_URL } from "@/config/config";
 import { initDynamicRouter } from "@/router/modules/dynamicRouter";

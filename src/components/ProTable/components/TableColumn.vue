@@ -5,6 +5,7 @@
 <script lang="tsx" setup name="TableColumn">
 import { ColumnProps } from "@/components/ProTable/interface";
 import { filterEnum, formatValue, handleRowAccordingToProp } from "@/utils/index";
+import { log } from "console";
 
 defineProps<{ column: ColumnProps }>();
 
@@ -37,8 +38,9 @@ const renderLoop = (item: ColumnProps) => {
 				>
 					{
 						{
+							// 默认插槽
 							default: (scope: any) => {
-								console.log("component---TableColumn---default---scope", scope);
+								{/* console.log("表格每一项数据", scope); */}
 								// 递归
 								if (item._children) return item._children.map(child => renderLoop(child));
 								// 当传入的是自定义的tsx渲染方式
@@ -49,13 +51,16 @@ const renderLoop = (item: ColumnProps) => {
 								if (item.tag) return <el-tag type={getTagType(item, scope)}>{renderCellData(item, scope)}</el-tag>;
 								return renderCellData(item, scope);
 							},
+							// 具名插槽
 							header: () => {
+								console.log("header插槽", item.prop);
 								// 当传入的是自定义的tsx渲染头
 								if (item.headerRender) return item.headerRender(item);
 								// 判断如果是XXXHeader命名的插槽---例:tableHeader | usernameHeader 等等
 								if (slots[`${item.prop}Header`]) return slots[`${item.prop}Header`]!({ row: item });
 								return item.label;
-							}
+							},
+							// 作用域插槽 ==> scope: (scope: any) => {return <>11</>}
 						}
 					}
 				</el-table-column>

@@ -62,5 +62,6 @@ declare module '@vue/runtime-core' {
     SearchFormItem: typeof import('./components/SearchForm/components/SearchFormItem.vue')['default']
     SwitchDark: typeof import('./components/SwitchDark/index.vue')['default']
     TableColumn: typeof import('./components/ProTable/components/TableColumn.vue')['default']
+    TreeFilter: typeof import('./components/TreeFilter/index.vue')['default']
   }
 }

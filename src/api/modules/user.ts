@@ -63,3 +63,8 @@ export const getUserDepartment = () => {
 export const getUserRole = () => {
 	return http.get<User.ResRole>(`/user/role`);
 };
+
+// * 获取树形用户列表
+export const getUserTreeList = (params: User.ReqUserParams) => {
+	return http.post<ResPage<User.ResUserList>>(`/user/tree/list`, params);
+};
