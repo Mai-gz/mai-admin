@@ -67,7 +67,6 @@ import {
 } from "@/api/modules/user";
 
 const router = useRouter();
-
 // 跳转详情页
 const toDetail = () => {
   router.push(`/proTable/useProTable/detail/${Math.random()}?params=detail-page`);
